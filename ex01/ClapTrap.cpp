@@ -20,6 +20,7 @@ ClapTrap::~ClapTrap() {
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
+	std::cout << "ClapTrap assignment operator called" << std::endl;
 	if (this != &other) {
 		Name = other.Name;
 		Hit_points = other.Hit_points;
@@ -30,7 +31,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 }
 
 void ClapTrap::attack(const std::string &target)
-{
+	{
 	if (Energy_points == 0 || Hit_points == 0) {
 		std::cout << "ClapTrap " << Name << " has no energy or is dead" << std::endl;
 		return;

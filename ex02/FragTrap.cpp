@@ -11,7 +11,7 @@ FragTrap::FragTrap(const std::string& name) : ClapTrap(name) {
 	Hit_points = 100;
 	Energy_points = 100;
 	attack_damage = 30;
-	std::cout << "namegiven FragTrap " << this->Name << "has been created!" << std::endl;
+	std::cout << "A namegiven FragTrap " << this->Name << "has been created!" << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other) {

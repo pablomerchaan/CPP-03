@@ -1,13 +1,36 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name): Hit_points(10), Energy_points(10), attack_damage(0) {
-	this->Name = name;
+ClapTrap::ClapTrap(std::string name)
+	: Name(name), Hit_points(10), Energy_points(10), attack_damage(0) {
 	std::cout << name << " has been created" << std::endl;
+}
+
+ClapTrap::ClapTrap()
+    : Name("Default"), Hit_points(10), Energy_points(10), attack_damage(0)
+{
+    std::cout << "ClapTrap default constructor called\n";
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap &other) {
+	std::cout << "ClapTrap assignment operator called" << std::endl;
+	if(this != &other) {
+		this->Name = other.Name;
+		this->Hit_points = other.Hit_points;
+		this->Energy_points = other.Energy_points;
+		this->attack_damage = other.attack_damage;
+	}
+	return *this;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &other) {
+	std::cout << "ClapTrap copy constructor called" << std::endl;
+	*this = other;
 }
 
 ClapTrap::~ClapTrap() {
 	std::cout << this->Name << " has been destroyed" << std::endl;
 }
+
 void ClapTrap::attack(const std::string &target)
 {
 	if (Energy_points == 0 || Hit_points == 0) {
@@ -41,6 +64,6 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	}
 	Hit_points += amount;
 	std::cout << "ClapTrap " << this->Name << " has been repaired gaining " << amount
-		<< " hit points now having " << Hit_points << "Hit points" << std::endl;
+		<< " hit points now having " << Hit_points << "hit points" << std::endl;
 	Energy_points--;
 }
